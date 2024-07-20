@@ -1,17 +1,17 @@
 provider "google" {
-  project = "devops-task-430009"
+  project = "your-gcp-project-id"
   region  = "us-central1"
 }
 
 module "infrastructure" {
-  source = "./terraform-module"  # Path to your module directory
+  source = "./terraform-module"
 
   vpc_cidr               = "10.0.0.0/16"
   subnet_cidrs           = ["10.0.1.0/24", "10.0.2.0/24"]
   cloud_run_service_name = "example-service"
-  cloud_run_image        = "us-docker.pkg.dev/cloudrun/container/hello"
+  cloud_run_image        = "gcr.io/your-project/your-image:latest"
   cloud_run_memory       = "512Mi"
-  project_id             = "devops-task-430009"
+  project_id             = "your-gcp-project-id"
   region                 = "us-central1"
 }
 

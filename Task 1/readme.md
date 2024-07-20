@@ -127,4 +127,7 @@ This project is accessible publically uisng this url :
 https://cloudrun-service-kscvlag7ta-uc.a.run.app
 ```
 
+![Screenshot from 2024-07-20 22-35-27](https://github.com/user-attachments/assets/0d07d04f-da79-4c11-af60-52491fc17af9)
+
+
 

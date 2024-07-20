@@ -1,3 +1,5 @@
+@Author: Dhruvi Vaishnav
+
 # Task 1: Setup Cloud Run with Terraform
 
 ![Cloud Run](https://www.gstatic.com/images/branding/product/1x/cloudrun_512dp.png)
@@ -119,3 +121,10 @@ output "cloud_run_url" {
   value       = google_cloud_run_service.default.status[0].url
 }
 ```
+
+This project is accessible publically uisng this url :
+```
+https://cloudrun-service-kscvlag7ta-uc.a.run.app
+```
+
+

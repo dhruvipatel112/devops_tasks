@@ -31,6 +31,35 @@ This module sets up a VPC, subnets, and a Cloud Run service on Google Cloud Plat
 |—— variables.tf
 ```
 
+
+
+
+
+```
+|—— Example
+|    |—— .terraform
+|        |—— modules
+|            |—— modules.json
+|        |—— providers
+|            |—— registry.terraform.io
+|                |—— hashicorp
+|                    |—— google
+|                        |—— 5.38.0
+|                            |—— linux_amd64
+|                                |—— LICENSE.txt
+|                                |—— terraform-provider-google_v5.38.0_x5
+|    |—— .terraform.lock.hcl
+|    |—— main.tf
+|    |—— provider.tf
+|    |—— terraform-infra-module
+|        |—— README.md
+|        |—— image.png
+|        |—— main.tf
+|        |—— outputs.tf
+|        |—— variables.tf
+|    |—— terraform.tfstate
+|    |—— terraform.tfstate.backup
+```
 | Name           | Description                                 | Type         | Default | Required |
 |----------------|---------------------------------------------|--------------|---------|----------|
 | project_id`    | Google Cloud Project ID                     | string       |         | yes      |

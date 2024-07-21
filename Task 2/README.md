@@ -46,6 +46,7 @@ This project is accessible publically uisng this url :
 ```
 https://cloudrun-srv-kscvlag7ta-uc.a.run.app
 ```
+
 terraform-infra-module -(This module contains dynamic variables for each resources)
 
 ```

@@ -79,6 +79,41 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
   policy_data = data.google_iam_policy.noauth.policy_data
 }
 ```
+compute
+```
+resource "google_project_service" "compute_api" {
+  project = "devops-task-430009"
+  service = "iam.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  disable_on_destroy = false
+}
+```
+
+```
+resource "google_compute_network" "vpc_network" {
+  project                 = "devops-task-430009"
+  name                    = "vpc-network"
+  auto_create_subnetworks = false
+  mtu                     = 1460
+}
+
+resource "google_compute_subnetwork" "network-with-private-secondary-ip-ranges" {
+  name          = "test-subnetwork"
+  ip_cidr_range = "10.2.0.0/16"
+  region        = "us-central1"
+  network       = google_compute_network.vpc_network.id
+  secondary_ip_range {
+    range_name    = "tf-test-secondary-range-update1"
+    ip_cidr_range = "192.168.10.0/24"
+  }
+  depends_on = [ google_compute_network.vpc_network ]
+}
+```
 
 This project is accessible publically uisng this url :
 ```

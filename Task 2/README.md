@@ -1,7 +1,4 @@
 Create a New Terraform Module for Reusable Infrastructure Components
-===
-Objective :Develop a reusable Terraform module that can be used to set up common infrastructure components.
-===
 
 ## Directory Hierarchy
 

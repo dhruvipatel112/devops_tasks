@@ -62,8 +62,6 @@ This module sets up a VPC, subnets, and a Cloud Run service on Google Cloud Plat
     latest_revision = true
   }
 }
-
-
 data "google_iam_policy" "noauth" {
   binding {
     role = "roles/run.invoker"
@@ -72,15 +70,14 @@ data "google_iam_policy" "noauth" {
     ]
   }
 }
-
 resource "google_cloud_run_service_iam_policy" "noauth" {
   location    = google_cloud_run_service.cloudrun.location
   project     = google_cloud_run_service.cloudrun.project
   service     = google_cloud_run_service.cloudrun.name
   policy_data = data.google_iam_policy.noauth.policy_data
 }
+```
 
-  ```
 - compute
 
 ```
@@ -95,10 +92,8 @@ resource "google_project_service" "compute_api" {
 
   disable_on_destroy = false
 }
-
-
-
 ```
+
 - network
 
 ```
@@ -147,6 +142,8 @@ resource "google_compute_subnetwork" "network-with-private-secondary-ip-ranges" 
 |        |—— variables.tf
 |    |—— terraform.tfstate
 |    |—— terraform.tfstate.backup
+```
+
 ```
 | Name           | Description                                 | Type         | Default | Required |
 |----------------|---------------------------------------------|--------------|---------|----------|

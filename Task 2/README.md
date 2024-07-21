@@ -1,17 +1,6 @@
 # Create a New Terraform Module for Reusable Infrastructure Components
 
-
-
-
 This module sets up a VPC, subnets, and a Cloud Run service on Google Cloud Platform (GCP).
-
-## Usage
-
-To use this module, create a Terraform configuration file in a separate directory and call the module with the necessary inputs.
-
-### Example Configuration
-
-Create a directory for your Terraform configuration (e.g., `example`) and add the following `main.tf` file:
 
 ```
 |—— .terraform
@@ -65,27 +54,6 @@ Create a directory for your Terraform configuration (e.g., `example`) and add th
 |—— variables.tf
 ```
 
-###Initialize and Apply
-Navigate to the directory containing your main.tf file (e.g., sample-usage).
-Initialize the Terraform configuration:
-```
-bash
-
-terraform init
-Validate the configuration:
-```
-```
-bash
-
-terraform validate
-Apply the configuration:
-```
-```
-bash
-
-terraform apply
-Follow the prompts to confirm the application of the configuration.
-```
 | Name           | Description                                 | Type         | Default | Required |
 |----------------|---------------------------------------------|--------------|---------|----------|
 | project_id`    | Google Cloud Project ID                     | string       |         | yes      |
@@ -102,11 +70,11 @@ Follow the prompts to confirm the application of the configuration.
 | subnet_ids`         | IDs of the created subnets            |
 | oud_run_service_url | URL of the deployed Cloud Run service |
 
-```
+
 Files
 -main.tf: Defines the resources for the VPC, subnets, and Cloud Run service.
 -variables.tf: Declares input variables for the module.
 -outputs.tf: Defines output variables to expose useful information about the resources.
 -README.md: Documentation on how to use the module.
-```
+
 

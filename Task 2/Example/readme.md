@@ -64,24 +64,26 @@ bash
 terraform apply
 Follow the prompts to confirm the application of the configuration.
 ```
-###Module Inputs
-Name	                    Description	                                Type	                Default	Required
-project_id	              Google Cloud Project ID	                    string		                  yes
-region	                  Region to deploy resources	                string		                  yes
-vpc_name	                Name of the VPC	                            string		                  yes
-subnet_cidrs	            List of subnet CIDRs	                      list(string)		            yes
-service_name	            Name of the Cloud Run service	              string		                  yes
-service_image	            Docker image for the Cloud Run service	    string		                  yes
-memory_limit	            Memory allocation for the Cloud Run service	string "256Mi"	            no
+| Name           | Description                                 | Type         | Default | Required |
+|----------------|---------------------------------------------|--------------|---------|----------|
+| project_id`    | Google Cloud Project ID                     | string       |         | yes      |
+| region`        | Region to deploy resources                  | string       |         | yes      |
+| `vpc_name`     | Name of the VPC                             | string       |         | yes      |
+| subnet_cidrs`  | List of subnet CIDRs                        | list(string) |         | yes      |
+| service_name`  | Name of the Cloud Run service               | string       |         | yes      |
+| service_image` | Docker image for the Cloud Run service      | string       |         | yes      |
+| `memory_limit` | Memory allocation for the Cloud Run service | string       | "256Mi" | no       |
 
+| Name                | Description                           |
+|---------------------|---------------------------------------|
+| `vpc_network_id`    | ID of the created VPC network         |
+| subnet_ids`         | IDs of the created subnets            |
+| oud_run_service_url | URL of the deployed Cloud Run service |
 
-###Module Outputs
-Name	Description
-vpc_network_id	ID of the created VPC network
-subnet_ids	IDs of the created subnets
-cloud_run_service_url	URL of the deployed Cloud Run service
+```
 Files
-main.tf: Defines the resources for the VPC, subnets, and Cloud Run service.
-variables.tf: Declares input variables for the module.
-outputs.tf: Defines output variables to expose useful information about the resources.
-README.md: Documentation on how to use the module.
+-main.tf: Defines the resources for the VPC, subnets, and Cloud Run service.
+-variables.tf: Declares input variables for the module.
+-outputs.tf: Defines output variables to expose useful information about the resources.
+-README.md: Documentation on how to use the module.
+```

@@ -6,6 +6,7 @@ Objective :Develop a reusable Terraform module that can be used to set up common
 
 ## Directory Hierarchy
 ```
+files
 |—— .terraform
 |    |—— modules
 |        |—— modules.json
@@ -56,10 +57,13 @@ Objective :Develop a reusable Terraform module that can be used to set up common
 |—— terraform.tfvars
 |—— variables.tf
 ```
+
 ## Code Details
 ### terraform-modules
+
 - cloud_run
-  ```
+```
+hcl
  resource "google_cloud_run_service" "cloudrun" {
   name     = "cloudrun-srv"
   location = "us-central1"
@@ -96,10 +100,12 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
   policy_data = data.google_iam_policy.noauth.policy_data
 }
 
+```
 
-  ```
+
 - compute
-  ```
+```
+hcl
   resource "google_project_service" "compute_api" {
   project = "devops-task-430009"
   service = "iam.googleapis.com"
@@ -113,10 +119,11 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 }
 
 
-  ```
+```
 - network
 
-  ```
+```
+hcl
 resource "google_compute_network" "vpc_network" {
   project                 = "devops-task-430009"
   name                    = "vpc-network"
@@ -135,6 +142,6 @@ resource "google_compute_subnetwork" "network-with-private-secondary-ip-ranges" 
   }
   depends_on = [ google_compute_network.vpc_network ]
 }
-  ```
+```
 
 

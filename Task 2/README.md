@@ -150,4 +150,7 @@ bash
 terraform apply
 Follow the prompts to confirm the application of the configuration.
 ```
-
+This project is accessible publically uisng this url :
+```
+https://my-cloud-run-service-kscvlag7ta-uc.a.run.app
+```

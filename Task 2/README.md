@@ -13,36 +13,56 @@ To use this module, create a Terraform configuration file in a separate director
 
 Create a directory for your Terraform configuration (e.g., `example`) and add the following `main.tf` file:
 
-```hcl
-provider "google" {
-  project = "your-project-id"
-  region  = "us-central1"
-}
-
-module "infra_module" {
-  source = "../path/to/your/module"
-
-  project_id    = "your-project-id"
-  region        = "us-central1"
-  vpc_name      = "my-vpc"
-  subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
-  service_name  = "my-cloud-run-service"
-  service_image = "gcr.io/my-project/my-image:latest"
-  memory_limit  = "256Mi"
-}
-
-output "vpc_network_id" {
-  value = module.infra_module.vpc_network_id
-}
-
-output "subnet_ids" {
-  value = module.infra_module.subnet_ids
-}
-
-output "cloud_run_service_url" {
-  value = module.infra_module.cloud_run_service_url
-}
-
+```
+|—— .terraform
+|    |—— modules
+|        |—— modules.json
+|    |—— providers
+|        |—— registry.terraform.io
+|            |—— hashicorp
+|                |—— google
+|                    |—— 5.38.0
+|                        |—— linux_amd64
+|                            |—— LICENSE.txt
+|                            |—— terraform-provider-google_v5.38.0_x5
+|—— .terraform.lock.hcl
+|—— Example
+|    |—— .terraform
+|        |—— modules
+|            |—— modules.json
+|        |—— providers
+|            |—— registry.terraform.io
+|                |—— hashicorp
+|                    |—— google
+|                        |—— 5.38.0
+|                            |—— linux_amd64
+|                                |—— LICENSE.txt
+|                                |—— terraform-provider-google_v5.38.0_x5
+|    |—— .terraform.lock.hcl
+|    |—— main.tf
+|    |—— provider.tf
+|    |—— terraform-infra-module
+|        |—— README.md
+|        |—— image.png
+|        |—— main.tf
+|        |—— outputs.tf
+|        |—— variables.tf
+|    |—— terraform.tfstate
+|    |—— terraform.tfstate.backup
+|—— README
+|—— main.tf
+|—— provider.tf
+|—— terraform-module
+|    |—— cloud_run
+|        |—— main.tf
+|    |—— compute
+|        |—— main.tf
+|    |—— network
+|        |—— main.tf
+|—— terraform.tfstate
+|—— terraform.tfstate.backup
+|—— terraform.tfvars
+|—— variables.tf
 ```
 
 ###Initialize and Apply

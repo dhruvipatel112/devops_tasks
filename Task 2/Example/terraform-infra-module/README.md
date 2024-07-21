@@ -30,7 +30,7 @@ output "cloud_run_service_url" {
 }
 
 ```
-![alt text](image.png)
+
 
 
 

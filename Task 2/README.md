@@ -83,5 +83,61 @@ Files
 -outputs.tf: Defines output variables to expose useful information about the resources.
 -README.md: Documentation on how to use the module.
 ```
+### Example Configuration
 
+Create a directory for your Terraform configuration (e.g., `example`) and add the following `main.tf` file:
+
+```hcl
+provider "google" {
+  project = "your-project-id"
+  region  = "us-central1"
+}
+
+module "infra_module" {
+  source = "../path/to/your/module"
+
+  project_id    = "your-project-id"
+  region        = "us-central1"
+  vpc_name      = "my-vpc"
+  subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
+  service_name  = "my-cloud-run-service"
+  service_image = "gcr.io/my-project/my-image:latest"
+  memory_limit  = "256Mi"
+}
+
+output "vpc_network_id" {
+  value = module.infra_module.vpc_network_id
+}
+
+output "subnet_ids" {
+  value = module.infra_module.subnet_ids
+}
+
+output "cloud_run_service_url" {
+  value = module.infra_module.cloud_run_service_url
+}
+
+```
+
+###Initialize and Apply
+Navigate to the directory containing your main.tf file (e.g., sample-usage).
+Initialize the Terraform configuration:
+```
+bash
+
+terraform init
+Validate the configuration:
+```
+```
+bash
+
+terraform validate
+Apply the configuration:
+```
+```
+bash
+
+terraform apply
+Follow the prompts to confirm the application of the configuration.
+```
 

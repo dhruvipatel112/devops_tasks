@@ -93,6 +93,7 @@ terraform-infra-module -(This module contains dynamic variables for each resourc
 | oud_run_service_url | URL of the deployed Cloud Run service |
 
 ```
+```
 Files
 -main.tf: Defines the resources for the VPC, subnets, and Cloud Run service.
 -variables.tf: Declares input variables for the module.

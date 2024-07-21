@@ -1,61 +1,7 @@
 # Create a New Terraform Module for Reusable Infrastructure Components
 
-## Directory Hierarchy
-
-files
-|—— .terraform
-|    |—— modules
-|        |—— modules.json
-|    |—— providers
-|        |—— registry.terraform.io
-|            |—— hashicorp
-|                |—— google
-|                    |—— 5.38.0
-|                        |—— linux_amd64
-|                            |—— LICENSE.txt
-|                            |—— terraform-provider-google_v5.38.0_x5
-|—— .terraform.lock.hcl
-|—— Example
-|    |—— .terraform
-|        |—— modules
-|            |—— modules.json
-|        |—— providers
-|            |—— registry.terraform.io
-|                |—— hashicorp
-|                    |—— google
-|                        |—— 5.38.0
-|                            |—— linux_amd64
-|                                |—— LICENSE.txt
-|                                |—— terraform-provider-google_v5.38.0_x5
-|    |—— .terraform.lock.hcl
-|    |—— main.tf
-|    |—— provider.tf
-|    |—— terraform-infra-module
-|        |—— README.md
-|        |—— image.png
-|        |—— main.tf
-|        |—— outputs.tf
-|        |—— variables.tf
-|    |—— terraform.tfstate
-|    |—— terraform.tfstate.backup
-|—— README
-|—— main.tf
-|—— provider.tf
-|—— terraform-module
-|    |—— cloud_run
-|        |—— main.tf
-|    |—— compute
-|        |—— main.tf
-|    |—— network
-|        |—— main.tf
-|—— terraform.tfstate
-|—— terraform.tfstate.backup
-|—— terraform.tfvars
-|—— variables.tf
 
 
-
-# Terraform Infrastructure Module
 
 This module sets up a VPC, subnets, and a Cloud Run service on Google Cloud Platform (GCP).
 

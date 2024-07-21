@@ -31,8 +31,96 @@ This module sets up a VPC, subnets, and a Cloud Run service on Google Cloud Plat
 |—— variables.tf
 ```
 
+##terraform-module
+```
+|—— terraform-module
+|    |—— cloud_run
+|        |—— main.tf
+|    |—— compute
+|        |—— main.tf
+|    |—— network
+|        |—— main.tf
+```
+
+- cloud_run
+  ```
+  resource "google_cloud_run_service" "cloudrun" {
+  name     = "cloudrun-srv"
+  location = "us-central1"
+  project = "devops-task-430009"
+
+  template {
+    spec {
+      containers {
+        image = "us-docker.pkg.dev/cloudrun/container/hello"
+      }
+    }
+  }
+
+  traffic {
+    percent         = 100
+    latest_revision = true
+  }
+}
 
 
+data "google_iam_policy" "noauth" {
+  binding {
+    role = "roles/run.invoker"
+    members = [
+      "allUsers",
+    ]
+  }
+}
+
+resource "google_cloud_run_service_iam_policy" "noauth" {
+  location    = google_cloud_run_service.cloudrun.location
+  project     = google_cloud_run_service.cloudrun.project
+  service     = google_cloud_run_service.cloudrun.name
+  policy_data = data.google_iam_policy.noauth.policy_data
+}
+
+  ```
+- compute
+
+```
+resource "google_project_service" "compute_api" {
+  project = "devops-task-430009"
+  service = "iam.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  disable_on_destroy = false
+}
+
+
+
+```
+- network
+
+```
+resource "google_compute_network" "vpc_network" {
+  project                 = "devops-task-430009"
+  name                    = "vpc-network"
+  auto_create_subnetworks = false
+  mtu                     = 1460
+}
+
+resource "google_compute_subnetwork" "network-with-private-secondary-ip-ranges" {
+  name          = "test-subnetwork"
+  ip_cidr_range = "10.2.0.0/16"
+  region        = "us-central1"
+  network       = google_compute_network.vpc_network.id
+  secondary_ip_range {
+    range_name    = "tf-test-secondary-range-update1"
+    ip_cidr_range = "192.168.10.0/24"
+  }
+  depends_on = [ google_compute_network.vpc_network ]
+}
+```
 
 
 ```

@@ -93,6 +93,7 @@ resource "google_project_service" "compute_api" {
   disable_on_destroy = false
 }
 ```
+network
 
 ```
 resource "google_compute_network" "vpc_network" {
